@@ -1,0 +1,151 @@
+id,difficulty,title,description,template,test_input,expected_output
+1,easy,Sum of Two Numbers,Write a function that returns the sum of two numbers.,"def sum_two(a, b):
+    # Your code here
+    pass","[3,5]",8
+2,easy,Difference of Two Numbers,Write a function to subtract two numbers.,"def difference(a, b):
+    # Your code here
+    pass","[8,3]",5
+3,easy,Multiply Two Numbers,Write a function to multiply two numbers.,"def multiply(a, b):
+    # Your code here
+    pass","[3,7]",21
+4,easy,Check Even Number,Check if a number is even.,"def is_even(n):
+    # Your code here
+    pass",4,True
+5,easy,Return First Element,Return the first element from a list.,"def first_element(lst):
+    # Your code here
+    pass","[1,2,3]",1
+6,easy,String Length,Return the length of a string.,"def str_length(s):
+    # Your code here
+    pass","""hello""",5
+7,easy,Find Maximum,Return max from a list.,"def find_max(lst):
+    # Your code here
+    pass","[4,9,2]",9
+8,easy,Add 10 to Number,Add 10 to the given number.,"def add_ten(n):
+    # Your code here
+    pass",5,15
+9,easy,Reverse List,Return the reversed list.,"def reverse_list(lst):
+    # Your code here
+    pass","[1,2,3]","[3,2,1]"
+10,easy,Concatenate Strings,Concatenate two strings.,"def concat_str(a,b):
+    # Your code here
+    pass","""a"",""b""","""ab"""
+11,easy,Is Positive,Return True if the number is positive.,"def is_positive(n):
+    # Your code here
+    pass",3,True
+12,easy,Square Number,Return the square of a number.,"def square(n):
+    # Your code here
+    pass",4,16
+13,easy,Check Odd Number,Check if a number is odd.,"def is_odd(n):
+    # Your code here
+    pass",5,True
+14,easy,Sum of List,Return the sum of a list.,"def sum_list(lst):
+    # Your code here
+    pass","[1,2,3]",6
+15,easy,Minimum of List,Return the minimum from a list.,"def min_list(lst):
+    # Your code here
+    pass","[5,2,8]",2
+16,easy,String to Uppercase,Convert a string to uppercase.,"def to_upper(s):
+    # Your code here
+    pass","""abc""","""ABC"""
+17,easy,Count Elements,Return the number of elements in a list.,"def count_elements(lst):
+    # Your code here
+    pass","[1,2,3,4]",4
+18,easy,Product of List,Return the product of all elements in a list.,"def product_list(lst):
+    # Your code here
+    pass","[2,3,4]",24
+19,easy,Join List into String,Join list of strings into a single string.,"def join_strings(lst):
+    # Your code here
+    pass","[""a"",""b"",""c""]","""abc"""
+20,easy,Remove Duplicates,Remove duplicates from a list.,"def remove_duplicates(lst):
+    # Your code here
+    pass","[1,2,2,3]","[1,2,3]"
+21,medium,Fibonacci Generator,Return the nth Fibonacci number.,"def fibonacci(n):
+    # Your code here
+    pass",7,13
+22,medium,Palindrome Check,Check if a string is palindrome.,"def is_palindrome(s):
+    # Your code here
+    pass","""level""",True
+23,medium,Factorial,Return the factorial of n.,"def factorial(n):
+    # Your code here
+    pass",5,120
+24,medium,Count Vowels,Count the vowels in a string.,"def count_vowels(s):
+    # Your code here
+    pass","""aeiou""",5
+25,medium,Second Largest,Return 2nd largest in list.,"def second_largest(lst):
+    # Your code here
+    pass","[5,9,3,8]",8
+26,medium,Unique Elements,Return list of unique elements.,"def unique_elements(lst):
+    # Your code here
+    pass","[1,1,2,3]","[1,2,3]"
+27,medium,String to Int,Convert string to integer.,"def str_to_int(s):
+    # Your code here
+    pass","""42""",42
+28,medium,Merge Dictionaries,Merge two dictionaries.,"def merge_dicts(d1,d2):
+    # Your code here
+    pass","{'a':1}, {'b':2}","{'a':1,'b':2}"
+29,medium,Remove Duplicates,Remove duplicates from list.,"def remove_duplicates(lst):
+    # Your code here
+    pass","[1,2,2,3]","[1,2,3]"
+30,medium,Sum Nested List,Return sum of all elements in nested list.,"def sum_nested(lst):
+    # Your code here
+    pass","[[1,2],[3,4]]",10
+31,medium,Prime Check,Check if a number is prime.,"def is_prime(n):
+    # Your code here
+    pass",7,True
+32,medium,Reverse String,Reverse a string.,"def reverse_string(s):
+    # Your code here
+    pass","""python""","""nohtyp"""
+33,medium,Max in Nested List,Find max element in nested list.,"def max_nested(lst):
+    # Your code here
+    pass","[[2,5],[3,1]]",5
+34,medium,Sum Diagonal,Sum of main diagonal in a 2D matrix.,"def sum_diagonal(matrix):
+    # Your code here
+    pass","[[1,2],[3,4]]",5
+35,medium,Swap Case,Swap the case of each character in a string.,"def swap_case(s):
+    # Your code here
+    pass","""PyThOn""","""pYtHoN"""
+36,medium,Sort by Length,Sort a list of strings by length.,"def sort_by_length(lst):
+    # Your code here
+    pass","[""a"",""abc"",""ab""]","[""a"",""ab"",""abc""]"
+37,medium,Get Middle Element,Get the middle element of a list.,"def middle_element(lst):
+    # Your code here
+    pass","[1,2,3]",2
+38,medium,Sum Positive Numbers,Sum only positive numbers in a list.,"def sum_positive(lst):
+    # Your code here
+    pass","[-1,2,3]",5
+39,medium,Remove Spaces,Remove all spaces from a string.,"def remove_spaces(s):
+    # Your code here
+    pass","""a b c""","""abc"""
+40,medium,Is Pangram,Check if string is a pangram (has all letters).,"def is_pangram(s):
+    # Your code here
+    pass","""the quick brown fox jumps over the lazy dog""",True
+41,hard,Prime Numbers,List all primes up to n.,"def primes_up_to(n):
+    # Your code here
+    pass",10,"[2,3,5,7]"
+42,hard,GCD,Compute greatest common divisor.,"def gcd(a, b):
+    # Your code here
+    pass","[12,18]",6
+43,hard,List Combinations,Return all pairs from list.,"def list_combinations(lst):
+    # Your code here
+    pass","[1,2,3]","[(1,2),(1,3),(2,3)]"
+44,hard,Anagram Check,Check if two strings are anagrams.,"def is_anagram(a,b):
+    # Your code here
+    pass","""listen"",""silent""",True
+45,hard,Flatten Nested List,Flatten a nested list.,"def flatten(lst):
+    # Your code here
+    pass","[[1],[2,3]]","[1,2,3]"
+46,hard,Longest Substring,Length of longest substring without repeating chars.,"def longest_substring(s):
+    # Your code here
+    pass","""abcabcbb""",3
+47,hard,Sort Dictionary by Value,"Sort dict by value, return keys.","def sort_dict(d):
+    # Your code here
+    pass","{'a':2,'b':1}","['b','a']"
+48,hard,Word Frequency,Return word frequency dict from string.,"def word_freq(s):
+    # Your code here
+    pass","""a a b""","{'a':2,'b':1}"
+49,hard,Matrix Transpose,Transpose a matrix.,"def transpose(m):
+    # Your code here
+    pass","[[1,2],[3,4]]","[[1,3],[2,4]]"
+50,hard,Sudoku Validator,Check if Sudoku board is valid.,"def valid_sudoku(board):
+    # Your code here
+    pass","[[5,3,4],[6,7,2],[1,9,8]]",True

@@ -1,0 +1,51 @@
+id,difficulty,question,options,correct_answer
+1,easy,Which is a valid Python variable name?,"['2var', '_var', 'var-name']",_var
+2,easy,What does print(2**3) output?,"['6', '8', '9']",8
+3,easy,Which keyword is used for function in Python?,"['def', 'function', 'func']",def
+4,easy,Which symbol is used for comments?,"['//', '#', '/*']",#
+5,easy,Which is a Python data type?,"['integer', 'list', 'double']",list
+6,easy,"What is the output of print(len([1,2,3]))?","['3', '2', '1']",3
+7,easy,How do you start a for loop?,"['for i in range(5):', 'foreach i in 5', 'loop i']",for i in range(5):
+8,easy,Which function adds element to end of list?,"['append()', 'add()', 'push()']",append()
+9,easy,Which is not a Python keyword?,"['True', 'None', 'main']",main
+10,easy,What is the output of print(type(3.14))?,"[""<class 'float'>"", 'float', 'decimal']",<class 'float'>
+11,easy,Which value is boolean?,"['0', 'True', ""'False'""]",True
+12,easy,What is the output of print('ab' * 3)?,"['ababab', 'ab3', 'Error']",ababab
+13,easy,What does list(range(3)) return?,"['[0,1,2]', '[1,2,3]', '[0,1,2,3]']","[0,1,2]"
+14,easy,Which method removes all items from list?,"['clear()', 'remove()', 'pop()']",clear()
+15,easy,Which operator is used for exponentiation?,"['**', '^', 'exp()']",**
+16,easy,"What does dict.get('a', 0) return if 'a' not present?","['0', 'None', 'Error']",0
+17,easy,How to import numpy as np?,"['import numpy as np', 'include numpy', 'import np']",import numpy as np
+18,easy,Which method converts string to lower case?,"['lower()', 'downcase()', 'tolower()']",lower()
+19,easy,What is slicing operator in Python?,"[':', ';', '/']",:
+20,easy,Which statement defines a class?,"['class', 'define class', 'struct']",class
+21,medium,Which module is used for regular expressions?,"['re', 'regex', 'rexp']",re
+22,medium,What is the output of print('Hello' + str(5))?,"['Hello5', 'Hello', '5Hello']",Hello5
+23,medium,Which function returns the length of a string?,"['len()', 'count()', 'size()']",len()
+24,medium,What is the output of print([i for i in range(3)])?,"['[0,1,2]', '[1,2,3]', 'Error']","[0,1,2]"
+25,medium,Which library is used for dataframes?,"['pandas', 'numpy', 'matplotlib']",pandas
+26,medium,"What does open('file.txt','r') do?","['Reads file', 'Writes file', 'Deletes file']",Reads file
+27,medium,What is __init__ in Python?,"['Constructor', 'Destructor', 'Initializer']",Constructor
+28,medium,Which command installs packages?,"['pip install', 'install pip', 'setup.py']",pip install
+29,medium,How do you catch exceptions?,"['try-except', 'try-catch', 'catch']",try-except
+30,medium,Which method reads a file in Python?,"['open()', 'readfile()', 'fopen()']",open()
+31,medium,Which of these is an immutable type?,"['tuple', 'list', 'set']",tuple
+32,medium,What does yield keyword do?,"['Returns generator', 'Raises error', 'Loops']",Returns generator
+33,medium,Which decorator is used for static methods?,"['@staticmethod', '@classmethod', '@static']",@staticmethod
+34,medium,What is a lambda function?,"['Anonymous function', 'Named function', 'Class method']",Anonymous function
+35,medium,Which is used for comments?,"['#', '//', '--']",#
+36,medium,Which operator checks for equality?,"['==', '=', '===']",==
+37,medium,Which string method checks suffix?,"['endswith()', 'startswith()', 'suffix()']",endswith()
+38,medium,How do you check length of dict d?,"['len(d)', 'd.len()', 'count(d)']",len(d)
+39,medium,What is default start for range(n)?,"['0', '1', 'None']",0
+40,medium,Which method adds dict entries?,"['update()', 'add()', 'append()']",update()
+41,hard,What is the output of print(bool('False'))?,"['True', 'False', 'Error']",True
+42,hard,Which function sorts a list in place?,"['sort()', 'sorted()', 'order()']",sort()
+43,hard,Which function creates a set?,"['set()', 'list()', 'dict()']",set()
+44,hard,"What is the output of print({1,2,2,3})?","['{1,2,3}', '{1,2,2,3}', 'Error']","{1,2,3}"
+45,hard,Which exception is raised by int('a')?,"['ValueError', 'TypeError', 'NameError']",ValueError
+46,hard,"What does enumerate([1,2,3]) return?","['iterator with index', 'list of values', 'dict']",iterator with index
+47,hard,How do you get keys from dict d?,"['d.keys()', 'keys(d)', 'd.getkeys()']",d.keys()
+48,hard,Which operator is logical AND?,"['and', '&&', 'AND']",and
+49,hard,What is the output of 3//2?,"['1', '1.5', '2']",1
+50,hard,Which is not a valid identifier?,"['1abc', 'abc1', '_abc']",1abc
