@@ -313,6 +313,14 @@ def render_coding_mode():
 
     row = subset.iloc[st.session_state.coding_idx]
     correct = False  # <<< FIX: initialize correct variable to avoid UnboundLocalError
+    current_qid = int(row["id"])
+    if "last_coding_qid" not in st.session_state:
+        st.session_state.last_coding_qid = current_qid
+    if st.session_state.last_coding_qid != current_qid:
+        st.session_state.user_code = row.get("template", "")
+        st.session_state.code_submitted = False
+        st.session_state.hint = ""
+        st.session_state.last_coding_qid = current_qid
 
 
     # Main panel wrapper (visual container)
@@ -542,6 +550,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
