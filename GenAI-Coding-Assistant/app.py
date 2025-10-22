@@ -6,6 +6,23 @@ import streamlit as st
 from utils import evaluate_code
 from gemini_api import generate_hint
 
+import os
+
+@st.cache_data
+def load_data():
+    base_path = os.path.dirname(__file__)  # folder where app.py is
+    coding_path = os.path.join(base_path, "coding_questions.csv")
+    quiz_path = os.path.join(base_path, "quiz_questions.csv")
+    
+    if not os.path.exists(coding_path) or not os.path.exists(quiz_path):
+        st.error("CSV files not found in the app folder!")
+        st.stop()
+    
+    coding = pd.read_csv(coding_path)
+    quiz = pd.read_csv(quiz_path)
+    coding["difficulty"] = coding["difficulty"].astype(str).str.lower()
+    quiz["difficulty"] = quiz["difficulty"].astype(str).str.lower()
+    return coding, quiz
 # -----------------------
 # CONFIGURABLE THEME COLORS (professional palette)
 # -----------------------
@@ -200,23 +217,7 @@ def show_error(msg: str, compact: bool = False):
 
 
 # Data Loaders (must be after set_page_config)
-import os
 
-@st.cache_data
-def load_data():
-    base_path = os.path.dirname(__file__)  # folder where app.py is
-    coding_path = os.path.join(base_path, "coding_questions.csv")
-    quiz_path = os.path.join(base_path, "quiz_questions.csv")
-    
-    if not os.path.exists(coding_path) or not os.path.exists(quiz_path):
-        st.error("CSV files not found in the app folder!")
-        st.stop()
-    
-    coding = pd.read_csv(coding_path)
-    quiz = pd.read_csv(quiz_path)
-    coding["difficulty"] = coding["difficulty"].astype(str).str.lower()
-    quiz["difficulty"] = quiz["difficulty"].astype(str).str.lower()
-    return coding, quiz
 
 
 
@@ -541,6 +542,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
