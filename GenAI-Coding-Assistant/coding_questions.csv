@@ -1,10 +1,10 @@
 id,difficulty,title,description,template,test_input,expected_output
 1,easy,Sum of Two Numbers,Write a function that returns the sum of two numbers.,"def sum_two(a, b):
     # Your code here
-    "[3,5]",8
+    "pass","[3,5]",8
 2,easy,Difference of Two Numbers,Write a function to subtract two numbers.,"def difference(a, b):
     # Your code here
-    "[8,3]",5
+    "pass","[8,3]",5
 3,easy,Multiply Two Numbers,Write a function to multiply two numbers.,"def multiply(a, b):
     # Your code here
     pass","[3,7]",21
