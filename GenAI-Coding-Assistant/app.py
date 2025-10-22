@@ -200,16 +200,28 @@ def show_error(msg: str, compact: bool = False):
 
 
 # Data Loaders (must be after set_page_config)
+import os
+
 @st.cache_data
 def load_data():
-    coding = pd.read_csv("coding_questions.csv")
-    quiz = pd.read_csv("quiz_questions.csv")
+    base_dir = os.path.dirname(__file__)  # folder where app.py lives
+    coding_path = os.path.join(base_dir, "coding_questions.csv")
+    quiz_path = os.path.join(base_dir, "quiz_questions.csv")
+
+    try:
+        coding = pd.read_csv(coding_path)
+        quiz = pd.read_csv(quiz_path)
+    except FileNotFoundError:
+        st.error(
+            "CSV files not found. Ensure coding_questions.csv and quiz_questions.csv "
+            "are in the same folder as app.py"
+        )
+        return pd.DataFrame(), pd.DataFrame()
+
     coding["difficulty"] = coding["difficulty"].astype(str).str.lower()
     quiz["difficulty"] = quiz["difficulty"].astype(str).str.lower()
     return coding, quiz
 
-
-CODING_DF, QUIZ_DF = load_data()
 
 # App Title (wrapped in nice markup)
 st.markdown(f"<h1 style='color:{ACCENT}; margin-bottom:6px;'>Adaptive Coding Challenges & Quizzes</h1>", unsafe_allow_html=True)
@@ -532,4 +544,5 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
