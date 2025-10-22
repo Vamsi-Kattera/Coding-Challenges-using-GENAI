@@ -394,22 +394,17 @@ def render_coding_mode():
 
 
 
-        else:
-            # Use custom error/hint displays for clarity
-            show_error("Incorrect or Error")
-            st.session_state.score -= 5
-
-            if not st.session_state.hint:
-                with st.spinner("Generating Hint..."):
-                    try:
-                        st.session_state.hint = generate_hint(
-                            row.get("description", ""), st.session_state.user_code
-                        )
-                    except Exception as e:
-                        st.session_state.hint = f"(hint generation failed: {e})"
-            if st.session_state.hint:
-                show_hint(st.session_state.hint)
-
+  else:
+        show_error("Incorrect or Error")
+        st.session_state.score -= 5
+        if not st.session_state.hint:
+            with st.spinner("Generating Hint..."):
+                try:
+                    st.session_state.hint = generate_hint(row.get("description", ""), st.session_state.user_code)
+                except Exception as e:
+                    st.session_state.hint = f"(hint generation failed: {e})"
+        if st.session_state.hint:
+            show_hint(st.session_state.hint)
     # Skip handler
     if skip_pressed:
         if int(row["id"]) not in set(st.session_state.coding_seen_ids):
@@ -545,6 +540,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
