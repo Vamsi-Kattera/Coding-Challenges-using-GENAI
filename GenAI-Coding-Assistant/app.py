@@ -312,9 +312,12 @@ def render_coding_mode():
         st.session_state.coding_idx = 0
 
     row = subset.iloc[st.session_state.coding_idx]
+    correct = False  # <<< FIX: initialize correct variable to avoid UnboundLocalError
+
 
     # Main panel wrapper (visual container)
     st.markdown('<div class="main-panel">', unsafe_allow_html=True)
+    
 
     # Header (no difficulty label in UI)
     st.subheader(f'Coding Challenge: {row.get("title", "")}')
@@ -538,6 +541,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
