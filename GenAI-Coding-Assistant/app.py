@@ -327,7 +327,7 @@ def render_coding_mode():
 
     # Start/Reset timer for this question
     # Show previous user input if any, otherwise show template
-    if not st.session_state.user_code:
+    if st.session_state.user_code == "" or st.session_state.code_submitted:
         st.session_state.user_code = row.get("template", "")
 
     new_code = st.text_area(
@@ -542,6 +542,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
