@@ -326,16 +326,17 @@ def render_coding_mode():
     st.code(row.get("template", ""), language="python")
 
     # Start/Reset timer for this question
-    if not st.session_state.code_submitted:
-        st.session_state.coding_start_time = time.time()
+    # Show previous user input if any, otherwise show template
+    if not st.session_state.user_code:
+        st.session_state.user_code = row.get("template", "")
 
-    # Code editor
     new_code = st.text_area(
         "Write your code below:",
-        value=st.session_state.user_code or row.get("template", ""),
+        value=st.session_state.user_code,
         height=220,
         key="code_area",
     )
+
     if new_code != st.session_state.user_code:
         st.session_state.user_code = new_code
         st.session_state.hint = ""
@@ -541,6 +542,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
