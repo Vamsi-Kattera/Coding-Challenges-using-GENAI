@@ -344,69 +344,67 @@ def render_coding_mode():
 
     # Submit handler
     if submit_pressed:
-        st.session_state.code_submitted = True
+    # Extract function name safely
+    try:
+        func_name = row.get("template", "").split("def ")[1].split("(")[0].strip()
+    except Exception:
+        func_name = None
 
-        # Extract function name safely
-        try:
-            func_name = row.get("template", "").split("def ")[1].split("(")[0].strip()
-        except Exception:
-            func_name = None
+    # Parse input/expected
+    test_input = parse_literal(row.get("test_input", ""))
+    expected_output = parse_literal(row.get("expected_output", ""))
 
-        # Parse input/expected
-        test_input = parse_literal(row.get("test_input", ""))
-        expected_output = parse_literal(row.get("expected_output", ""))
+    if func_name:
+        test_args = test_input if isinstance(test_input, list) else [test_input]
+        correct, _ = evaluate_code(
+            st.session_state.user_code,
+            func_name,
+            test_args,
+            expected_output,
+        )
+    else:
+        correct = False
 
-        if func_name:
-            # ensure we pass a list of inputs if necessary
-            test_args = test_input if isinstance(test_input, list) else [test_input]
-            correct, _ = evaluate_code(
-                st.session_state.user_code,
-                func_name,
-                test_args,
-                expected_output,
+    if correct:
+        # Mark seen, score, flash, adapt timing
+        if int(row["id"]) not in set(st.session_state.coding_seen_ids):
+            st.session_state.coding_seen_ids.append(int(row["id"]))
+        st.session_state.flash_type = "success"
+        st.session_state.flash_msg = "✅ Correct!"
+        st.session_state.score += 10
+
+        # Quick & correct -> raise difficulty by a single step
+        elapsed = time.time() - st.session_state.coding_start_time
+        if elapsed < 40:
+            st.session_state.coding_difficulty = bump_difficulty(
+                st.session_state.coding_difficulty, go_up=True
             )
+            st.session_state.coding_idx = 0
         else:
-            correct = False
+            st.session_state.coding_idx += 1
 
-        if correct:
-            # Mark seen, score, flash, adapt timing
-            if int(row["id"]) not in set(st.session_state.coding_seen_ids):
-                st.session_state.coding_seen_ids.append(int(row["id"]))
-            st.session_state.flash_type = "success"
-            st.session_state.flash_msg = "Correct!"
-            st.session_state.score += 10
+        # Reset user code and hint but **show feedback first**
+        st.success(st.session_state.flash_msg)
+        st.session_state.user_code = ""
+        st.session_state.hint = ""
+        st.session_state.code_submitted = False
+        st.markdown("</div>", unsafe_allow_html=True)
+        return
+    else:
+        # Incorrect answer: show error immediately
+        show_error("❌ Incorrect or Error")
+        st.session_state.score -= 5
 
-            # Quick & correct -> raise difficulty by a single step
-            elapsed = time.time() - st.session_state.coding_start_time
-            if elapsed < 40:
-                st.session_state.coding_difficulty = bump_difficulty(
-                    st.session_state.coding_difficulty, go_up=True
-                )
-                st.session_state.coding_idx = 0
-            else:
-                st.session_state.coding_idx += 1
-
-            # Reset for next render
-            st.session_state.user_code = ""
-            st.session_state.code_submitted = False
-            st.session_state.hint = ""
-            st.markdown("</div>", unsafe_allow_html=True)
-            return
-        else:
-            # Use custom error/hint displays for clarity
-            show_error("Incorrect or Error")
-            st.session_state.score -= 5
-
-            if not st.session_state.hint:
-                with st.spinner("Generating Hint..."):
-                    try:
-                        st.session_state.hint = generate_hint(
-                            row.get("description", ""), st.session_state.user_code
-                        )
-                    except Exception as e:
-                        st.session_state.hint = f"(hint generation failed: {e})"
-            if st.session_state.hint:
-                show_hint(st.session_state.hint)
+        if not st.session_state.hint:
+            with st.spinner("Generating Hint..."):
+                try:
+                    st.session_state.hint = generate_hint(
+                        row.get("description", ""), st.session_state.user_code
+                    )
+                except Exception as e:
+                    st.session_state.hint = f"(hint generation failed: {e})"
+        if st.session_state.hint:
+            show_hint(st.session_state.hint)
 
     # Skip handler
     if skip_pressed:
@@ -543,6 +541,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
