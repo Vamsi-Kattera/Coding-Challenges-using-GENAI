@@ -23,6 +23,7 @@ def load_data():
     coding["difficulty"] = coding["difficulty"].astype(str).str.lower()
     quiz["difficulty"] = quiz["difficulty"].astype(str).str.lower()
     return coding, quiz
+CODING_DF, QUIZ_DF = load_data()
 # -----------------------
 # CONFIGURABLE THEME COLORS (professional palette)
 # -----------------------
@@ -542,6 +543,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
