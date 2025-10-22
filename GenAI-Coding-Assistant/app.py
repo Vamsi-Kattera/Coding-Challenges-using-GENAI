@@ -392,9 +392,7 @@ def render_coding_mode():
         st.markdown("</div>", unsafe_allow_html=True)
         return
 
-
-
-  else:
+    else:
         show_error("Incorrect or Error")
         st.session_state.score -= 5
         if not st.session_state.hint:
@@ -540,6 +538,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
