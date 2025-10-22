@@ -338,12 +338,19 @@ def render_coding_mode():
     if st.session_state.user_code == "" or st.session_state.code_submitted:
         st.session_state.user_code = row.get("template", "")
 
-    new_code = st.text_area(
-        "Write your code below:",
-        value=st.session_state.user_code,
-        height=220,
-        key="code_area",
-    )
+    q_id = int(row["id"])  # get current question id
+
+# Initialize user_code for this question if not already
+    if f"user_code_{q_id}" not in st.session_state:
+        st.session_state.user_code = row.get("template", "")
+        new_code = st.text_area(
+            "Write your code below:",
+            value=st.session_state.user_code,
+            height=220,
+            key=f"code_area_{q_id}",  # unique key per question
+        )
+        st.session_state.user_code = new_code
+
 
     if new_code != st.session_state.user_code:
         st.session_state.user_code = new_code
@@ -550,6 +557,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
