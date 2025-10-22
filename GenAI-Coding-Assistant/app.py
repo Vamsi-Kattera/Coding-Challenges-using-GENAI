@@ -368,32 +368,30 @@ def render_coding_mode():
         else:
             correct = False
 
-        if correct:
-           if int(row["id"]) not in set(st.session_state.coding_seen_ids):
-              st.session_state.coding_seen_ids.append(int(row["id"]))
+       if correct:
+          if int(row["id"]) not in set(st.session_state.coding_seen_ids):
+             st.session_state.coding_seen_ids.append(int(row["id"]))
 
     # Show success message immediately
-           st.success("Correct!")
-           st.session_state.score += 10
+          st.success("Correct!")
+          st.session_state.score += 10
 
     # Adapt difficulty based on elapsed time
-           elapsed = time.time() - st.session_state.coding_start_time
-           if elapsed < 40:
+          elapsed = time.time() - st.session_state.coding_start_time
+          if elapsed < 40:
              st.session_state.coding_difficulty = bump_difficulty(
              st.session_state.coding_difficulty, go_up=True
         )
              st.session_state.coding_idx = 0
-           else:
+          else:
              st.session_state.coding_idx += 1
 
     # Reset code and hint **after feedback is displayed**
-    # Just mark code_submitted False; no need for experimental_rerun
           st.session_state.user_code = ""
           st.session_state.code_submitted = False
           st.session_state.hint = ""
           st.markdown("</div>", unsafe_allow_html=True)
           return
-
 
         else:
             # Use custom error/hint displays for clarity
@@ -546,6 +544,7 @@ if st.session_state.mode == "coding":
     render_coding_mode()
 else:
     render_quiz_mode()
+
 
 
 
